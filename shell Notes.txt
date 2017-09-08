@@ -1,0 +1,99 @@
+$SHELL 系统变量
+if 条件语句 中括号必须有空格
+
+if [ 条件 ]; then
+elif [ 条件 ]; then
+fi
+
+shell 中的 switch case:
+
+case variable in
+pattern1 | pattern2) commands1;;
+pattern3) commands2;;
+*) default commands;;
+esac
+
+
+$USER 是环境变量，当前用户表示
+
+for 语句：
+for var in list
+do
+commands
+done
+
+${BASH_VERSION} bash环境变量 表示当前版本
+
+
+ 1> /dev/null 表示将命令的标准输出重定向到 /dev/null
+ 2>/dev/null 表示将命令的错误输出重定向到 /dev/null
+ 
+ 点 在shell中的作用：
+ “.”点命令是shell的一个内部命令，它从指定的shell 文件中读入所有命令语句并在当前进程 中执行。 因此当多个shell进程（父子进程或无关进程均可）共享一组变量值时，就可以将这些变量赋值语句定义到一个shell文件里，并在需要这些变量值的程序中使用点语句来引用这个shell文件，从而实现变量值共享（对这些变量值的修改仅涉及到这个shell文件）。但要注意的是，这个shell文件不能包括含有位置参数的语句，即不能接受＄1、＄2等命令行参数。
+ 
+ ${BASH_VERSINFO[0]} bash环境变量:
+ BASH_VERSINFO=([0]="4" [1]="3" [2]="11" [3]="1" [4]="release" [5]="x86_64-pc-linux-gnu")
+
+比较大小： 
+n1 -eq n2 Check if n1 is equal to n2.
+n1 -ge n2 Check if n1 is greater than or equal to n2.
+n1 -gt n2 Check if n1 is greater than n2.
+n1 -le n2 Check if n1 is less than or equal to n2.
+n1 -lt n2 Check if n1 is less than n2.
+n1 -ne n2 Check if n1 is not equal to n2.
+
+
+
+username:password:uid:guid:Full Name:Default Home Folder:Default shell programm
+rich    :    x   :501: 501:Rich Blum:/home/rich         :/bin/bash
+
+
+
+
+echo -e “\033[40;37m 黑底白字 \033[0m” 
+echo -e “\033[41;37m 红底白字 \033[0m” 
+echo -e “\033[42;37m 绿底白字 \033[0m” 
+echo -e “\033[43;37m 黄底白字 \033[0m” 
+echo -e “\033[44;37m 蓝底白字 \033[0m” 
+echo -e “\033[45;37m 紫底白字 \033[0m” 
+echo -e “\033[46;37m 天蓝底白字 \033[0m” 
+echo -e “\033[47;30m 白底黑字 \033[0m” 
+
+
+echo 显示颜色：
+\33[0m 关闭所有属性 
+\33[1m 设置高亮度 
+\33[4m 下划线 
+\33[5m 闪烁 
+\33[7m 反显 
+\33[8m 消隐 
+\33[30m — \33[37m 设置前景色 
+\33[40m — \33[47m 设置背景色 
+\33[nA 光标上移n行 
+\33[nB 光标下移n行 
+\33[nC 光标右移n行 
+\33[nD 光标左移n行 
+\33[y;xH设置光标位置 
+\33[2J 清屏 
+\33[K 清除从光标到行尾的内容 
+\33[s 保存光标位置 
+\33[u 恢复光标位置 
+\33[?25l 隐藏光标 
+\33[?25h 显示光标
+
+
+
+git-----------------------
+
+ sudo git config --system alias.st status     #git st
+ sudo git config --system alias.ci commit   #git commit
+ sudo git config --system alias.co checkout  #git co
+ sudo git config --system alias.br  branch  #git branch
+ 
+git config --global diff.tool vimdiff  
+git config --global difftool.prompt false  
+git config --global alias.d difftool
+
+sudo git config [–-local|–-global|–-system] -l
+sudo git config [–-local|–-global|–-system] -e
+–unset格式：git config [–local|–global|–system] –unset section.key
